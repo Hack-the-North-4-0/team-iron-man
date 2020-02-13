@@ -1,11 +1,11 @@
-import { PersonalInfo } from './personalInfo';
+import { PersonalInfoBuilder } from './personalInfo';
 
 test('The National Insurance Number has a particular format', async () => {
     const numericalNINs = ["123456789", "AB345678A1", "AB3456789", "12345678A"];
 
     for (const badNIN of numericalNINs) {
         try {
-            PersonalInfo.of(badNIN); 
+            PersonalInfoBuilder.newInstance().withNationalInsuranceNumber(badNIN).build();
         } catch (err) {
             expect(err).toBeTruthy();
         }
@@ -16,7 +16,7 @@ test('This NIN works', async () => {
     const correctNin = "AB345678A";
     let result = false;
     try {
-        PersonalInfo.of(correctNin);
+        PersonalInfoBuilder.newInstance().withNationalInsuranceNumber(correctNin).build();
     } catch (err) {
         result = true;
     }
