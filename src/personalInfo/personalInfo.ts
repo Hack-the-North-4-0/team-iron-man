@@ -15,7 +15,7 @@ export class PersonalInfo {
 }
 
 export class PersonalInfoBuilder {
-    nationalInsuranceNumber: string;
+    nationalInsuranceNumber = "";
     
     // name
     // dob
